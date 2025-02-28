@@ -5,7 +5,7 @@ import {
   IconUsersGroup,
 } from '@tabler/icons-react';
 import { Group, MantineProvider } from '@mantine/core';
-import { AvatarButton } from './AvatarButton';
+import { AvatarButton, AvatarMenu } from './AvatarButton';
 import classes from './Layout.module.css';
 
 const data = [
@@ -45,8 +45,7 @@ export function Header() {
                 
             </div>
         </nav>
-        <AvatarButton />
-        {/* <Avatar className={classes.avatar} size="lg" radius="xl"/> */}
+        <AvatarMenu />
     </div>
     </MantineProvider>
   );
