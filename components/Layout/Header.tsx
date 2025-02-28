@@ -44,11 +44,7 @@ export function Header() {
                 
             </div>
         </nav>
-        <a
-        className={classes.avatar}
-        >
-        <Avatar size="lg" radius="xl"/>
-        </a>
+        <Avatar className={classes.avatar} size="lg" radius="xl"/>
     </div>
     </MantineProvider>
   );
