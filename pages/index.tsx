@@ -1,11 +1,13 @@
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Welcome } from '../components/Welcome/Welcome';
+import { AppShell } from '@mantine/core';
+import { Header } from '../components/Layout/Header';
 
 export default function HomePage() {
+
   return (
-    <>
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
+    <AppShell padding="xl">
+      <Header/>
+      
+      <AppShell.Main>Main</AppShell.Main>
+    </AppShell>
   );
-}
+};
