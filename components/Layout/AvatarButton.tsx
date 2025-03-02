@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { Group, Avatar, Menu, UnstyledButton } from '@mantine/core';
 import classes from './Layout.module.css';
+import { Link } from 'react-router-dom';
 
 
 export const AvatarButton = forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<'button'>>(
@@ -21,13 +22,13 @@ export function AvatarMenu() {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item 
-        component="a"
-        href="/login">
+        component={Link}
+        to="/login">
           Login
           </Menu.Item>
         <Menu.Item
-        component="a"
-        href="/register">Register
+        component={Link}
+        to="/register">Register
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>
