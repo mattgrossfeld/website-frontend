@@ -20,8 +20,15 @@ export function AvatarMenu() {
         <AvatarButton/>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item>Login</Menu.Item>
-        <Menu.Item>Register</Menu.Item>
+        <Menu.Item 
+        component="a"
+        href="/login">
+          Login
+          </Menu.Item>
+        <Menu.Item
+        component="a"
+        href="/register">Register
+        </Menu.Item>
       </Menu.Dropdown>
     </Menu>
     
