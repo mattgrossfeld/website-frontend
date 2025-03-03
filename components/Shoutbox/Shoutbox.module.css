@@ -1,0 +1,6 @@
+.shoutbox {
+  width: 50%;
+  padding: var(--mantine-spacing-md);
+  box-shadow: var(--mantine-shadow-sm);
+  border-radius: var(--mantine-radius-md);
+}

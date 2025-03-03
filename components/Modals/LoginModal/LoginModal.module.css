@@ -1,0 +1,4 @@
+.loginButton {
+    position: right;
+    margin-top: --var-mantine-spacing-xs;
+}
