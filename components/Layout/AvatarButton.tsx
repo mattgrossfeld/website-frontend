@@ -1,29 +1,18 @@
-import { forwardRef } from 'react';
-import { Group, Avatar, Menu, UnstyledButton } from '@mantine/core';
+import { Group, Menu, UnstyledButton, Burger } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import { useDisclosure } from '@mantine/hooks';
 import classes from './Layout.module.css';
 
-interface AvatarButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  onLoginClick: () => void;
-}
-
-export const AvatarButton = forwardRef<HTMLButtonElement, AvatarButtonProps>(
-  ({ onLoginClick, ...props }, ref) => (
-    <UnstyledButton {...props} ref={ref}>
-      <Group>
-        <Avatar className={classes.avatar} size="lg" radius="xl" />
-      </Group>
-    </UnstyledButton>
-  )
-);
 
 export function AvatarMenu({ onLoginClick }: { onLoginClick: () => void }) {
+  const [opened, { toggle }] = useDisclosure();
+
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
         <UnstyledButton>
           <Group>
-            <Avatar className={classes.avatar} size="lg" radius="xl" />
+            <Burger className={classes.avatar} opened={opened} onClick={toggle} size="lg" aria-label="Toggle Additional Options"  />
           </Group>
         </UnstyledButton>
       </Menu.Target>
