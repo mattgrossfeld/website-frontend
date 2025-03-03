@@ -1,5 +1,4 @@
 import { Modal, Anchor, Checkbox, Group, PasswordInput, TextInput, Button } from '@mantine/core';
-import classes from './LoginModal.module.css';
 interface LoginModalProps {
   opened: boolean;
   onClose: () => void;
