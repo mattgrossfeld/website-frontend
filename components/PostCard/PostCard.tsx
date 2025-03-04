@@ -22,11 +22,9 @@ export function PostCard({ title, body, community, createdTm, createdBy }: PostC
         {body}
       </Text>
       <Group mt="md" justify='space-between'>
-        <Text size="xs" c="dimmed">
-          Created by {createdBy}
-        </Text>
-        <Text size="xs" c="dimmed">
-          {createdTm}
+        <div /> {/* Empty div to push the text to the right */}
+        <Text size="xs" c="dimmed" style={{ textAlign: 'right' }}>
+          Created by {createdBy} on {createdTm}
         </Text>
       </Group>
     </Paper>

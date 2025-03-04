@@ -65,7 +65,7 @@
     color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-5));
 
 
-    /* @mixin hover {
+    @mixin hover {
         background-color: light-dark(var(--mantine-color-green-0), var(--mantine-color-green-6));
         color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
     
@@ -84,5 +84,63 @@
             color: var(--mantine-color-blue-light-color);
           }
         }
-      } */
+      }
   }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Three columns: left, middle, right */
+    gap: var(--mantine-spacing-lg); /* Add space between columns */
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .title {
+    margin-bottom: var(--mantine-spacing-md);
+    font-size: 1.5rem; /* Make the text a little smaller */
+    font-weight: 600; /* Make the text bold */
+    color: var(--mantine-color-dark-1); /* Modern dark color */
+  }
+  
+  .divider {
+    width: 50%;
+    margin: 10px auto; /* Center the divider */
+    border-top: 1px solid var(--mantine-color-dark-5); /* Light gray horizontal line */
+  }
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr; /* Adjusted to make the middle column wider */
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    padding: 20px;
+    flex: 1;
+    margin-top: 60px; /* Adjust based on header height */
+}
+
+.emptyCell {
+    grid-column: span 1;
+}
+
+.titleCell {
+    grid-column: 2 / 3;
+    text-align: center;
+}
+
+.contentCell {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure the content takes up the full width of the column */
+    margin: 0 auto; /* Center the content */
+}
+
+.shoutboxCell {
+    grid-column: 3 / 4;
+
+}
+

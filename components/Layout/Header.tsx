@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
   IconHome,
-  IconPencil,
   IconUsersGroup,
 } from '@tabler/icons-react';
 import { Group, MantineProvider } from '@mantine/core';
@@ -12,12 +11,10 @@ import LoginModal from '../Modals/LoginModal/LoginModal';
 
 const data = [
   { link: '/', label: 'Home', icon: IconHome },
-  { link: '/communities', label: 'Communities', icon: IconUsersGroup },
-  { link: '/post', label: 'Create Post', icon: IconPencil },
-
+  { link: '/communities', label: 'Communities', icon: IconUsersGroup }
 ];
 
-export function Header() {
+export default function Header() {
   const [active, setActive] = useState('Home');
   const [loginModalOpened, setLoginModalOpened] = useState(false);
 
