@@ -1,4 +1,5 @@
 import React from "react";
+import { CommunityCard } from "@/components/CommunityCard/CommunityCard";
 
 const communityData = [
     {
@@ -21,7 +22,9 @@ const communityData = [
             body: "This is the third post.",
             createdBy: "Olive",
             createdTm: "2025-02-02T12:00:00Z"
-        }
+        },
+        createdBy: "Olive",
+        createdTm: "2025-02-02T12:00:00Z"
     },
     {
         name: "ThirdCommunity",
@@ -31,13 +34,25 @@ const communityData = [
             body: "This is the fifth post.",
             createdBy: "Matthew",
             createdTm: "2025-02-04T12:00:00Z"
-        }
+        },
+        createdBy: "Matthew",
+        createdTm: "2025-02-04T12:00:00Z"
     }
 ];
 
 const Communities = () => {
     return (
-            <h1>Communities</h1>
+        <div>
+            {communityData.map((community, index) => (
+                <CommunityCard
+                    key={index}
+                    name={community.name}
+                    description={community.description}
+                    createdBy={community.createdBy}
+                    createdTm={community.createdTm}
+                />
+            ))}
+        </div>
     );
 };
 
