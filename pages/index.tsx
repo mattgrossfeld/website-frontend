@@ -1,8 +1,8 @@
 import { AppShell } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import Home from './Home/home';
-import Communities from './Communities/communities';
+import Home from './home';
+import Communities from './communities';
 import Layout from '@/components/Layout/Layout';
 
 const AppRoutes = () => {

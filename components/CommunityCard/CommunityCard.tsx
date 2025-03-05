@@ -1,15 +1,9 @@
-import { Paper, Text, Group, Card } from '@mantine/core';
+import { Paper, Text, Group } from '@mantine/core';
 import classes from './CommunityCard.module.css';
 
 interface CommunityCardProps {
   name: string;
   description: string;
-  lastPost: {
-    title: string;
-    body: string;
-    createdBy: string;
-    createdTm: string;
-  };
   createdBy: string;
   createdTm: string;
 }
