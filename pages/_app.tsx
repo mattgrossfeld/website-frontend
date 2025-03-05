@@ -13,20 +13,25 @@ export default function App({ Component, pageProps }: AppProps) {
   const [pageTitle, setPageTitle] = useState('');
 
   useEffect(() => {
-    switch (router.pathname) {
-      case '/home':
-        setPageTitle('Latest Posts');
-        break;
-      case '/communities':
-        setPageTitle('Latest Communities');
-        break;
-      case '/profile':
-        setPageTitle("Logged In User's Profile");
-        break;
-      default:
-        setPageTitle('');
+    if (router.pathname.startsWith('/communities/')) {
+      const communityName = router.query.community;
+      setPageTitle(`Community: ${communityName}`);
+    } else {
+      switch (router.pathname) {
+        case '/home':
+          setPageTitle('Latest Posts');
+          break;
+        case '/communities':
+          setPageTitle('Latest Communities');
+          break;
+        case '/profile':
+          setPageTitle("Logged In User's Profile");
+          break;
+        default:
+          setPageTitle('');
+      }
     }
-  }, [router.pathname]);
+  }, [router.pathname, router.query]);
 
   return (
     <MantineProvider theme={theme}>
