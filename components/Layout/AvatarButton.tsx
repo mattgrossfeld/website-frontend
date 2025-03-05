@@ -1,10 +1,12 @@
 import { Group, Avatar, Menu, UnstyledButton } from '@mantine/core';
-import { Link } from 'react-router-dom';
 import classes from './Layout.module.css';
 
+interface AvatarMenuProps {
+  onLoginClick: () => void;
+  onRegisterClick: () => void;
+}
 
-
-export function AvatarMenu({ onLoginClick }: { onLoginClick: () => void }) {
+export function AvatarMenu({ onLoginClick, onRegisterClick }: AvatarMenuProps) {
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
@@ -18,7 +20,7 @@ export function AvatarMenu({ onLoginClick }: { onLoginClick: () => void }) {
         <Menu.Item component="button" onClick={onLoginClick}>
           Login
         </Menu.Item>
-        <Menu.Item component={Link} to="/register">
+        <Menu.Item component="button" onClick={onRegisterClick}>
           Register
         </Menu.Item>
       </Menu.Dropdown>

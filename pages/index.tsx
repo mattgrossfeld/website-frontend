@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import Home from './Home/home';
 import Communities from './Communities/communities';
-import Login from './login';
-import Register from './register';
 import Layout from '@/components/Layout/Layout';
 
 const AppRoutes = () => {
@@ -16,10 +14,6 @@ const AppRoutes = () => {
         return 'Latest Posts';
       case '/communities':
         return 'Latest Communities';
-      case '/login':
-        return 'Login';
-      case '/register':
-        return 'Register';
       default:
         return 'Your Page Title';
     }
@@ -32,8 +26,6 @@ const AppRoutes = () => {
           <Routes>
             <Route path="/" element={<Home />} index />
             <Route path="/communities" element={<Communities />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
           </Routes>
         </AppShell.Main>
       </AppShell>

@@ -8,6 +8,7 @@ import { AvatarMenu } from './AvatarButton';
 import classes from './Layout.module.css';
 import { Link } from 'react-router-dom';
 import LoginModal from '../Modals/LoginModal/LoginModal';
+import RegisterModal from '../Modals/RegisterModal/RegisterModal';
 
 const data = [
   { link: '/', label: 'Home', icon: IconHome },
@@ -17,6 +18,7 @@ const data = [
 export default function Header() {
   const [active, setActive] = useState('Home');
   const [loginModalOpened, setLoginModalOpened] = useState(false);
+  const [registerModalOpened, setRegisterModalOpened] = useState(false);
 
   
   const links = data.map((item) => (
@@ -37,6 +39,9 @@ export default function Header() {
 
   const openLoginModal = () => setLoginModalOpened(true);
   const closeLoginModal = () => setLoginModalOpened(false);
+  const openRegisterModal = () => setRegisterModalOpened(true);
+  const closeRegisterModal = () => setRegisterModalOpened(false);
+
   return (
     <MantineProvider forceColorScheme='dark'>
     <div className={classes.header}>
@@ -48,8 +53,10 @@ export default function Header() {
                 
             </div>
         </nav>
-        <AvatarMenu onLoginClick={openLoginModal} />
+        <AvatarMenu onLoginClick={openLoginModal} onRegisterClick={openRegisterModal} />
         <LoginModal opened={loginModalOpened} onClose={closeLoginModal} />
+        <RegisterModal opened={registerModalOpened} onClose={closeRegisterModal} />
+
 
     </div>
     </MantineProvider>
