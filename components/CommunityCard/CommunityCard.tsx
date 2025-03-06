@@ -1,4 +1,4 @@
-import { Paper, Text, Group } from '@mantine/core';
+import { Group, Paper, Text } from '@mantine/core';
 import classes from './CommunityCard.module.css';
 
 interface CommunityCardProps {
@@ -9,7 +9,6 @@ interface CommunityCardProps {
 }
 
 export function CommunityCard({ name, description, createdBy, createdTm }: CommunityCardProps) {
-
   return (
     <Paper withBorder radius="md" className={classes.card}>
       <Group justify="space-between">
@@ -20,8 +19,8 @@ export function CommunityCard({ name, description, createdBy, createdTm }: Commu
       <Text size="sm" mt="sm" c="dimmed">
         {description}
       </Text>
-      <Group mt="md" justify='space-between'>
-        <div/>
+      <Group mt="md" justify="space-between">
+        <div />
         <Text size="xs" c="dimmed">
           Created by {createdBy} on {createdTm}
         </Text>

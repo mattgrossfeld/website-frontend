@@ -23,8 +23,8 @@
     bottom: 0;
     left: 0;
     width: 6px;
-    background-image: linear-gradient(
-      0,
+    background: linear-gradient(
+      to top,
       var(--mantine-color-green-4),
       var(--mantine-color-green-9)
     );

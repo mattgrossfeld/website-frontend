@@ -1,3 +1,18 @@
+# TODO:
+* Profile page
+* Unique post/thread page
+* Unique Community page
+* Login functionality
+* Cookie authentication
+* Create Post
+* Respond To Post
+* Connect to DB
+* Pagination
+* Fields we want on every table and generated on every CRUD operation (timestamps and uuids)
+* Profile page customization
+* For posts and shouts, need text customization and image upload
+* Private communities only visible to community members added (can see in communities list but cannot see users or posts in community).
+* NSFW Tag (?) for JD
 # Mantine Next.js template
 
 This is a template for [Next.js](https://nextjs.org/) pages router + [Mantine](https://mantine.dev/).

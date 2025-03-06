@@ -1,52 +1,14 @@
-import { AppShell } from '@mantine/core';
-import React, { useEffect, useState } from 'react';
-import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import Home from './home';
-import Communities from './communities';
-import Layout from '@/components/Layout/Layout';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-const AppRoutes = () => {
-  const location = useLocation();
-
-  const getPageTitle = (pathname: string) => {
-    switch (pathname) {
-      case '/':
-        return 'Latest Posts';
-      case '/communities':
-        return 'Latest Communities';
-      default:
-        return 'Your Page Title';
-    }
-  };
-
-  return (
-    <Layout pageTitle={getPageTitle(location.pathname)}>
-      <AppShell padding="xl">
-        <AppShell.Main>
-          <Routes>
-            <Route path="/" element={<Home />} index />
-            <Route path="/communities" element={<Communities />} />
-          </Routes>
-        </AppShell.Main>
-      </AppShell>
-    </Layout>
-  );
-};
-
-export default function HomePage() {
-  const [isClient, setIsClient] = useState(false);
+const IndexPage = () => {
+  const router = useRouter();
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    router.push('/home');
+  }, [router]);
 
-  if (!isClient) {
-    return null; // Render nothing on the server
-  }
+  return null;
+};
 
-  return (
-    <Router>
-      <AppRoutes />
-    </Router>
-  );
-}
+export default IndexPage;
