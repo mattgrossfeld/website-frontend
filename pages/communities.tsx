@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
 
 const communityData = [
@@ -41,6 +42,12 @@ const communityData = [
 ];
 
 const Communities = () => {
+  const router = useRouter();
+
+  const handleCardClick = (communityName: string) => {
+    router.push(`/communities/${communityName}`);
+  };
+
   return (
     <div>
       {communityData.map((community, index) => (
@@ -50,6 +57,7 @@ const Communities = () => {
           description={community.description}
           createdBy={community.createdBy}
           createdTm={community.createdTm}
+          onClick={() => handleCardClick(community.name)}
         />
       ))}
     </div>

@@ -6,11 +6,12 @@ interface CommunityCardProps {
   description: string;
   createdBy: string;
   createdTm: string;
+  onClick?: () => void;
 }
 
-export function CommunityCard({ name, description, createdBy, createdTm }: CommunityCardProps) {
+export function CommunityCard({ name, description, createdBy, createdTm, onClick }: CommunityCardProps) {
   return (
-    <Paper withBorder radius="md" className={classes.card}>
+    <Paper withBorder radius="md" className={classes.card} onClick={onClick} style={{ cursor: 'pointer' }}>
       <Group justify="space-between">
         <Text size="xl" fw={500}>
           {name}

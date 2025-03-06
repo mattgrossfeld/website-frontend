@@ -15,8 +15,21 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (router.pathname.startsWith('/communities/')) {
       const communityName = router.query.community;
-      setPageTitle(`Community: ${communityName}`);
-    } else {
+      setPageTitle(`${communityName}`);
+    } 
+    
+    else if (router.pathname.startsWith('/posts/')) {
+      const postId = router.query.postId;
+      setPageTitle(`Post: ${postId}`);
+    } 
+    
+    else if (router.pathname.startsWith('/users/')) {
+      const username = router.query.username;
+      setPageTitle(`User: ${username}`);
+    }
+
+    
+    else {
       switch (router.pathname) {
         case '/home':
           setPageTitle('Latest Posts');
