@@ -24,7 +24,7 @@
       left: 0;
       width: 6px;
       background: linear-gradient(
-        0,
+        to top,
         var(--mantine-color-green-4),
         var(--mantine-color-green-9)
       );
