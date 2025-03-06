@@ -1,4 +1,5 @@
-import { Modal, Anchor, Checkbox, Group, PasswordInput, TextInput, Button } from '@mantine/core';
+import { Anchor, Button, Checkbox, Group, Modal, PasswordInput, TextInput } from '@mantine/core';
+
 interface LoginModalProps {
   opened: boolean;
   onClose: () => void;
@@ -6,15 +7,16 @@ interface LoginModalProps {
 
 export default function LoginModal({ opened, onClose }: LoginModalProps) {
   return (
-    <Modal 
-        opened={opened} 
-        onClose={onClose} 
-        title="Login" 
-        centered
-        overlayProps={{
-            backgroundOpacity: 0.5,
-            blur: 4
-    }}>
+    <Modal
+      opened={opened}
+      onClose={onClose}
+      title="Login"
+      centered
+      overlayProps={{
+        backgroundOpacity: 0.5,
+        blur: 4,
+      }}
+    >
       <TextInput label="Email" placeholder="you@mantine.dev" required />
       <PasswordInput label="Password" placeholder="Your password" required mt="md" />
       <Group justify="space-between" mt="lg">
@@ -24,7 +26,7 @@ export default function LoginModal({ opened, onClose }: LoginModalProps) {
         </Anchor>
       </Group>
       <Group justify="right" mt="sm">
-      <Button>Login</Button>
+        <Button>Login</Button>
       </Group>
     </Modal>
   );

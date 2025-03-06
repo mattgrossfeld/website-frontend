@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Paper, TextInput, Button, Text, Box, Group } from '@mantine/core';
+import { Box, Button, Group, Paper, Text, TextInput } from '@mantine/core';
 import styles from './Shoutbox.module.css';
 
 interface Shout {
@@ -32,7 +32,9 @@ export function Shoutbox() {
 
   return (
     <Paper withBorder radius="md" className={styles.shoutbox}>
-      <Text size="lg" fw={500} mb="md">Shouts</Text>
+      <Text size="lg" fw={500} mb="md">
+        Shouts
+      </Text>
       <form onSubmit={handleSubmit}>
         <TextInput
           label="Message"
@@ -56,8 +58,12 @@ export function Shoutbox() {
       <Box mt="lg">
         {shoutData.map((shout, index) => (
           <Box key={index} mb="sm">
-            <Text size="sm" fw={500}>{shout.createdBy}</Text>
-            <Text size="xs" c="dimmed">{new Date(shout.createdTm).toLocaleString()}</Text>
+            <Text size="sm" fw={500}>
+              {shout.createdBy}
+            </Text>
+            <Text size="xs" c="dimmed">
+              {new Date(shout.createdTm).toLocaleString()}
+            </Text>
             <Text size="sm">{shout.message}</Text>
           </Box>
         ))}

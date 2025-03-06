@@ -1,4 +1,4 @@
-import { Group, Avatar, Menu, UnstyledButton } from '@mantine/core';
+import { Avatar, Group, Menu, UnstyledButton } from '@mantine/core';
 import classes from './Layout.module.css';
 
 interface AvatarMenuProps {

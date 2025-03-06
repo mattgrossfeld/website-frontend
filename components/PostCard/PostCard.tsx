@@ -1,4 +1,4 @@
-import { Paper, Text, Group, Badge } from '@mantine/core';
+import { Badge, Group, Paper, Text } from '@mantine/core';
 import classes from './PostCard.module.css';
 
 interface PostCardProps {
@@ -16,12 +16,14 @@ export function PostCard({ title, body, community, createdTm, createdBy }: PostC
         <Text size="xl" fw={500}>
           {title}
         </Text>
-        <Badge autoContrast color="green.5">{community}</Badge>
+        <Badge autoContrast color="green.5">
+          {community}
+        </Badge>
       </Group>
       <Text size="sm" mt="sm" c="dimmed">
         {body}
       </Text>
-      <Group mt="md" justify='space-between'>
+      <Group mt="md" justify="space-between">
         <div /> {/* Empty div to push the text to the right */}
         <Text size="xs" c="dimmed" style={{ textAlign: 'right' }}>
           Created by {createdBy} on {createdTm}

@@ -1,19 +1,16 @@
 import { useState } from 'react';
-import {
-  IconHome,
-  IconUsersGroup,
-} from '@tabler/icons-react';
-import { Group, MantineProvider } from '@mantine/core';
-import { AvatarMenu } from './AvatarButton';
-import classes from './Layout.module.css';
 import Link from 'next/link';
+import { IconHome, IconUsersGroup } from '@tabler/icons-react';
+import { Group, MantineProvider } from '@mantine/core';
+import { theme } from '@/theme';
 import LoginModal from '../Modals/LoginModal/LoginModal';
 import RegisterModal from '../Modals/RegisterModal/RegisterModal';
-import { theme } from '@/theme';
+import { AvatarMenu } from './AvatarButton';
+import classes from './Layout.module.css';
 
 const data = [
   { link: '/home', label: 'Home', icon: IconHome },
-  { link: '/communities', label: 'Communities', icon: IconUsersGroup }
+  { link: '/communities', label: 'Communities', icon: IconUsersGroup },
 ];
 
 export default function Header() {
@@ -53,9 +50,7 @@ export default function Header() {
       <div className={classes.header}>
         <nav className={classes.nav}>
           <div>
-            <Group>
-              {links}
-            </Group>
+            <Group>{links}</Group>
           </div>
         </nav>
         <AvatarMenu onLoginClick={openLoginModal} onRegisterClick={openRegisterModal} />

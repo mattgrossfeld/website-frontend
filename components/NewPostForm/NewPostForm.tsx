@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, Textarea, Select, Button, Group, Box, Card } from '@mantine/core';
+import { Box, Button, Card, Group, Select, Textarea, TextInput } from '@mantine/core';
 
 const communities = [
   { value: 'community1', label: 'Community 1' },

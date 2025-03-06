@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router'
- 
+import { useRouter } from 'next/router';
+
 export default function Community() {
-  const router = useRouter()
-  return (<h1>Community: {router.query.community}</h1>)
+  const router = useRouter();
+  return <h1>Community: {router.query.community}</h1>;
 }

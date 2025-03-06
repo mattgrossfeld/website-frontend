@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { AppShell } from '@mantine/core';
 import Layout from '@/components/Layout/Layout';
 

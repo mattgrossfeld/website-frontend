@@ -1,12 +1,12 @@
 import '@mantine/core/styles.css';
 
+import { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
-import { theme } from '../theme';
-import Layout from '@/components/Layout/Layout';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { MantineProvider } from '@mantine/core';
+import Layout from '@/components/Layout/Layout';
+import { theme } from '../theme';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
