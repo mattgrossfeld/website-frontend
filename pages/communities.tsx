@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { Button, Group, Box } from '@mantine/core';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
 
 const communityData = [
@@ -51,8 +52,18 @@ const Communities = () => {
     });
   };
 
+  const handleCreateCommunity = () => {
+    // Navigate to the create community page or open a modal
+    console.log('Create Community button clicked');
+  };
+
   return (
-    <div>
+    <Box /*style={{ maxWidth: '800px', margin: '0 auto' }}*/>
+      <Group align="left" mb="lg" mt="sm" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <Button color="green" onClick={handleCreateCommunity}>
+          Create Community
+        </Button>
+      </Group>
       {communityData.map((community, index) => (
         <CommunityCard
           key={index}
@@ -63,7 +74,7 @@ const Communities = () => {
           onClick={() => handleCardClick(community.name, community.description)}
         />
       ))}
-    </div>
+    </Box>
   );
 };
 
