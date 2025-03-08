@@ -116,7 +116,7 @@
     display: grid;
     grid-template-columns: 1fr 5fr 1fr; /* Adjusted to make the middle column wider */
     grid-template-rows: auto 1fr;
-    gap: 20px;
+    /* gap: 20px; */
     padding: 20px;
     flex: 1;
     margin-top: 60px; /* Adjust based on header height */
@@ -141,6 +141,10 @@
 
 .shoutboxCell {
     grid-column: 3 / 4;
-
+    margin-top: 25%;
+    margin-left: 10%;
+    width: 100%;
+    margin-right: 10%;
+    margin-bottom: 10%;
 }
 

@@ -44,8 +44,11 @@ const communityData = [
 const Communities = () => {
   const router = useRouter();
 
-  const handleCardClick = (communityName: string) => {
-    router.push(`/communities/${communityName}`);
+  const handleCardClick = (communityName: string, description: string) => {
+    router.push({
+      pathname: `/communities/${communityName}`,
+      query: { description },
+    });
   };
 
   return (
@@ -57,7 +60,7 @@ const Communities = () => {
           description={community.description}
           createdBy={community.createdBy}
           createdTm={community.createdTm}
-          onClick={() => handleCardClick(community.name)}
+          onClick={() => handleCardClick(community.name, community.description)}
         />
       ))}
     </div>

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { Tabs } from '@mantine/core';
+import { Tabs, Text } from '@mantine/core';
 import { PostCard } from '../../components/PostCard/PostCard';
 import { ContentTable } from '../../components/ContentTable/ContentTable';
 
@@ -93,15 +93,35 @@ const users = [
   },
 ];
 
+const communityData = [
+  {
+    name: 'Default',
+    description: 'The default community for all users.',
+  },
+  {
+    name: 'SecondCommunity',
+    description: 'The second community for all users.',
+  },
+  {
+    name: 'ThirdCommunity',
+    description: 'The third community for all users.',
+  },
+];
+
 export default function CommunityPage() {
   const router = useRouter();
   const { community } = router.query;
   const [activeTab, setActiveTab] = useState('posts');
   const [isClient, setIsClient] = useState(false);
+  const [communityDescription, setCommunityDescription] = useState('');
 
   useEffect(() => {
     if (community) {
       document.title = community as string;
+      const communityInfo = communityData.find((c) => c.name === community);
+      if (communityInfo) {
+        setCommunityDescription(communityInfo.description);
+      }
     }
   }, [community]);
 
@@ -115,6 +135,9 @@ export default function CommunityPage() {
 
   return (
     <div>
+      <Text size="lg" style={{ marginTop: 'var(--mantine-spacing-lg)', textAlign: 'center' }}>
+        {communityDescription}
+      </Text>
       <Tabs color="green.7" value={activeTab} onChange={(value) => setActiveTab(value || 'posts')}>
         <Tabs.List>
           <Tabs.Tab value="posts">Posts</Tabs.Tab>

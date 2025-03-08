@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
       <div className={classes.gridContainer}>
         <div className={classes.emptyCell} />
         <div className={classes.titleCell}>
-          <Title order={3} className={classes.title}>
+          <Title order={1} className={classes.title}>
             {pageTitle}
           </Title>
           <Divider className={classes.divider} />
