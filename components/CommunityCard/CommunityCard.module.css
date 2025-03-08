@@ -33,6 +33,6 @@
 
 .joinButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: var(--mantine-spacing-sm);
+  right: var(--mantine-spacing-sm);
 }
