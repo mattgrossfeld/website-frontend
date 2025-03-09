@@ -12,7 +12,6 @@ export default function PostPage() {
 
   useEffect(() => {
     if (postName) {
-    //   const decodedTitle = decodeURIComponent(postName as string).replace(/-/g, ' ');
       const topPost = posts.find((post) => post.parent_post_id === null);
       if (topPost) {
         setTopPost(topPost);
