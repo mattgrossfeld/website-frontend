@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
 import { Badge, Group, Paper, Text } from '@mantine/core';
 import classes from './PostCard.module.css';
 
 interface PostCardProps {
+  id: number;
   title: string;
   body: string;
   community: string;
@@ -10,8 +12,15 @@ interface PostCardProps {
 }
 
 export function PostCard({ title, body, community, createdTm, createdBy }: PostCardProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    const encodedTitle = encodeURIComponent(title.toLowerCase().replace(/\s+/g, '-'));
+    router.push(`/posts/${encodedTitle}`);
+  };
+
   return (
-    <Paper withBorder radius="md" className={classes.card}>
+    <Paper withBorder radius="md" className={classes.card} onClick={handleClick} style={{ cursor: 'pointer' }}>
       <Group justify="space-between">
         <Text size="xl" fw={500}>
           {title}

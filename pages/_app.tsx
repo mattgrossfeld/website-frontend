@@ -8,6 +8,50 @@ import { MantineProvider } from '@mantine/core';
 import Layout from '@/components/Layout/Layout';
 import { theme } from '../theme';
 
+// Mock data for posts
+export const posts = [
+  {
+    id: 1,
+    title: 'Post 1',
+    content: 'Content of post 1',
+    createdBy: 'User1',
+    communityId: 1,
+    communityName: 'Community 1',
+    createdTm: '2023-01-01T12:00:00Z',
+    parent_post_id: null,
+  },
+  {
+    id: 2,
+    title: 'Post 2',
+    content: 'Content of post 2',
+    createdBy: 'User2',
+    communityId: 1,
+    communityName: 'Community 1',
+    createdTm: '2023-01-02T12:00:00Z',
+    parent_post_id: 1,
+  },
+  {
+    id: 3,
+    title: 'Post 3',
+    content: 'Content of post 3',
+    createdBy: 'User3',
+    communityId: 1,
+    communityName: 'Community 1',
+    createdTm: '2023-01-03T12:00:00Z',
+    parent_post_id: 1,
+  },
+  {
+    id: 4,
+    title: 'Post 4',
+    content: 'Content of post 4',
+    createdBy: 'User4',
+    communityId: 1,
+    communityName: 'Community 1',
+    createdTm: '2023-01-04T12:00:00Z',
+    parent_post_id: 1,
+  },
+];
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [pageTitle, setPageTitle] = useState('');
@@ -19,8 +63,15 @@ export default function App({ Component, pageProps }: AppProps) {
     } 
     
     else if (router.pathname.startsWith('/posts/')) {
-      const postId = router.query.postId;
-      setPageTitle(`Post: ${postId}`);
+      const postName = router.query.postName;
+      const decodedTitle = decodeURIComponent(postName as string).replace(/-/g, ' ');
+      const topPost = posts.find((post) => post.title.toLowerCase() === decodedTitle.toLowerCase() && post.parent_post_id === null);
+      if (topPost) {
+        setPageTitle(topPost.title);
+      }
+      else {
+        setPageTitle(posts[0].title);
+      }
     } 
     
     else if (router.pathname.startsWith('/users/')) {
@@ -39,6 +90,9 @@ export default function App({ Component, pageProps }: AppProps) {
           break;
         case '/profile':
           setPageTitle("Logged In User's Profile");
+          break;
+        case '/new-post':
+          setPageTitle('Create a New Post');
           break;
         default:
           setPageTitle('');

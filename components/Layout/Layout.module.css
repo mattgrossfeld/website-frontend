@@ -148,3 +148,10 @@
     margin-bottom: 10%;
 }
 
+.createPostButton {
+  position: absolute;
+  top: var(--mantine-spacing-sm);
+  right: var(--mantine-spacing-sm);
+  z-index: 1; /* Ensure the button is above other elements */
+}
+

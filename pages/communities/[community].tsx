@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { Tabs, Text } from '@mantine/core';
+import { Button, Tabs, Text, Group } from '@mantine/core';
 import { PostCard } from '../../components/PostCard/PostCard';
 import { ContentTable } from '../../components/ContentTable/ContentTable';
+import { IconPlus } from '@tabler/icons-react';
 
 // Mock data for posts and users
 const posts = [
@@ -133,18 +134,41 @@ export default function CommunityPage() {
     return null;
   }
 
+  const handleCreatePost = () => {
+    router.push('/new-post');
+  };
+
   return (
     <div>
       <Text size="lg" style={{ marginTop: 'var(--mantine-spacing-lg)', textAlign: 'center' }}>
         {communityDescription}
       </Text>
       <Tabs color="green.7" value={activeTab} onChange={(value) => setActiveTab(value || 'posts')}>
+        <Group align="right" style={{ width: '100%' }}>
+          <Button color="green.9" ml="auto">Join Community</Button>
+        </Group>
         <Tabs.List>
           <Tabs.Tab value="posts">Posts</Tabs.Tab>
           <Tabs.Tab value="users">Users</Tabs.Tab>
+          
         </Tabs.List>
 
         <Tabs.Panel value="posts" style={{ marginTop: 'var(--mantine-spacing-lg)' }}>
+        <Button
+            value="create-post"
+            onClick={handleCreatePost}
+            style={{
+              backgroundColor: 'var(--mantine-color-green-9)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '0 var(--mantine-spacing-sm)',
+              marginLeft: 'auto',
+            }}
+          >
+            <IconPlus size={16} style={{ marginRight: 'var(--mantine-spacing-xs)' }} />
+            Create Post
+          </Button>
           {posts.map((post) => (
             <PostCard createdTm={new Date().toLocaleTimeString()} body={post.content} community={post.communityName} key={post.id} {...post} />
           ))}

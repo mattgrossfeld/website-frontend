@@ -46,8 +46,7 @@ const Home = () => {
           body={post.body}
           community={post.community}
           createdTm={new Date(post.createdTm).toLocaleString()}
-          createdBy={post.createdBy}
-        />
+          createdBy={post.createdBy} id={index}        />
       ))}
     </>
   );
