@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }: AppProps) {
     
     else {
       switch (router.pathname) {
-        case '/home':
+        case '/':
           setPageTitle('Latest Posts');
           break;
         case '/communities':
