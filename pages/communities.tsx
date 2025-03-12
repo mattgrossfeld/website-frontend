@@ -54,7 +54,9 @@ const Communities = () => {
 
   const handleCreateCommunity = () => {
     // Navigate to the create community page or open a modal
-    console.log('Create Community button clicked');
+    router.push({
+      pathname: '/create-community'
+    });
   };
 
   return (

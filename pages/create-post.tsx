@@ -1,5 +1,5 @@
 
-import { NewPostForm } from '@/components/NewPostForm/NewPostForm';
+import { NewPostForm } from '@/components/Forms/NewPostForm/NewPostForm';
 
 
 export default function NewPostPage() {

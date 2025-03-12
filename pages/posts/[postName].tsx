@@ -1,18 +1,22 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
-import { Text, Button, Group, Card } from '@mantine/core';
+import { Text, Button, Group } from '@mantine/core';
 import { PostCard } from '../../components/PostCard/PostCard';
 import { posts } from '../_app';
+import '@mantine/tiptap/styles.css';
 import dynamic from 'next/dynamic';
 
-const RichTextEditorComponent = dynamic(() => import('@mantine/rte'), { ssr: false });
+const RichTextEditorComponent = dynamic<{}>(() => import('../../components/RichTextEditor/RichTextEditor')
+  .then(mod => mod.RichTextEditorComponent), 
+  { ssr: false });
+
+// const RichTextEditorComponent = dynamic(() => import('@mantine/rte'), { ssr: false });
 
 export default function PostPage() {
   const router = useRouter();
   const { postName } = router.query;
   const [topPost, setTopPost] = useState<{ id: number; title: string; content: string; createdBy: string; communityId: number; communityName: string; createdTm: string; parent_post_id: number | null } | null>(null);
   const [replies, setReplies] = useState<Array<{ id: number; title: string; content: string; createdBy: string; communityId: number; communityName: string; createdTm: string; parent_post_id: number | null }>>([]);
-  const [editorValue, setEditorValue] = useState('');
   const latestPostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,12 +36,12 @@ export default function PostPage() {
 
   const handleSubmit = () => {
     // Handle submit logic here
-    console.log('Submitted content:', editorValue);
+    console.log('Submitted content');
   };
 
   const handlePreview = () => {
     // Handle preview logic here
-    console.log('Preview content:', editorValue);
+    console.log('Preview content');
   };
 
   const scrollToLatestPost = () => {
@@ -51,27 +55,31 @@ export default function PostPage() {
   }
 
   return (
-    <div>
-      <Group align="left" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
-        <Button color="green" onClick={scrollToLatestPost}>
-          Latest Post In Thread
-        </Button>
-      </Group>
-      <PostCard body={topPost.content} community="" {...topPost} />
-      {replies.map((reply, index) => (
-        <div key={reply.id} ref={index === replies.length - 1 ? latestPostRef : null}>
-          <PostCard body={reply.content} community="" {...reply} />
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ width: '100%', maxWidth: '800px' }}>
+        <Group align="left" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+          <Button color="green" onClick={scrollToLatestPost}>
+            Latest Post In Thread
+          </Button>
+        </Group>
+        <PostCard body={topPost.content} community="" {...topPost} />
+        {replies.map((reply, index) => (
+          <div key={reply.id} ref={index === replies.length - 1 ? latestPostRef : null}>
+            <PostCard body={reply.content} community="" {...reply} />
+          </div>
+        ))}
+        <div style={{ minHeight: '200px', border: '1px solid var(--mantine-color-dark-9)', borderRadius: '4px', marginTop: 'var(--mantine-spacing-md)' }}>
+          <RichTextEditorComponent />
         </div>
-      ))}
-        <RichTextEditorComponent value={editorValue} onChange={setEditorValue} style={{ minHeight: '200px', border: '1px solid #ced4da', borderRadius: '4px' }} />
-        <Group align="right" mt="md">
-          <Button color="green" onClick={handlePreview}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'var(--mantine-spacing-md)' }}>
+          <Button color="green" onClick={handlePreview} style={{ marginRight: 'var(--mantine-spacing-xs)' }}>
             Preview
           </Button>
           <Button color="green" onClick={handleSubmit}>
             Submit
           </Button>
-        </Group>
+        </div>
+      </div>
     </div>
   );
 }

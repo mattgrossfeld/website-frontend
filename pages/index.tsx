@@ -1,5 +1,4 @@
 import '@mantine/tiptap/styles.css';
-import { RichTextEditorComponent } from '../components/RichTextEditor/RichTextEditor';
 import { PostCard } from '@/components/PostCard/PostCard';
 
 
@@ -59,7 +58,6 @@ export default function Home() {
   return (
     <div>
       <IndexPage />
-      <RichTextEditorComponent />
     </div>
   );
 }

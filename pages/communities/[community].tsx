@@ -135,7 +135,7 @@ export default function CommunityPage() {
   }
 
   const handleCreatePost = () => {
-    router.push('/new-post');
+    router.push('/create-post');
   };
 
   return (

@@ -91,7 +91,7 @@ export default function App({ Component, pageProps }: AppProps) {
         case '/profile':
           setPageTitle("Logged In User's Profile");
           break;
-        case '/new-post':
+        case '/create-post':
           setPageTitle('Create a New Post');
           break;
         default:
