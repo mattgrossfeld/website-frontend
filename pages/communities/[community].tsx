@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { Button, Tabs, Text, Group } from '@mantine/core';
+import { Button, Tabs, Text, Group, ScrollArea } from '@mantine/core';
 import { PostCard } from '../../components/PostCard/PostCard';
 import { ContentTable } from '../../components/ContentTable/ContentTable';
+import { RolesTable } from '../../components/RolesTable/RolesTable';
 import { IconPlus } from '@tabler/icons-react';
 
 // Mock data for posts and users
@@ -109,6 +110,30 @@ const communityData = [
   },
 ];
 
+const roles = [
+  {
+    roleName: 'Admin',
+    roleDescription: 'Administrator with full access',
+    roleLevel: 1,
+    isAdmin: true,
+    roleCreatedTm: '2025-01-01T12:00:00Z',
+    roleUpdatedTm: '2025-01-10T12:00:00Z',
+    roleCreatedBy: 'System',
+    roleModifiedBy: 'John Doe',
+  },
+  {
+    roleName: 'Member',
+    roleDescription: 'Regular member with limited access',
+    roleLevel: 2,
+    isAdmin: false,
+    roleCreatedTm: '2025-01-01T12:00:00Z',
+    roleUpdatedTm: '2025-01-10T12:00:00Z',
+    roleCreatedBy: 'System',
+    roleModifiedBy: 'Jane Doe',
+  },
+  // ...other roles
+];
+
 export default function CommunityPage() {
   const router = useRouter();
   const { community } = router.query;
@@ -150,7 +175,7 @@ export default function CommunityPage() {
         <Tabs.List>
           <Tabs.Tab value="posts">Posts</Tabs.Tab>
           <Tabs.Tab value="users">Users</Tabs.Tab>
-          
+          <Tabs.Tab value="roles">Roles</Tabs.Tab>
         </Tabs.List>
 
         <Tabs.Panel value="posts" style={{ marginTop: 'var(--mantine-spacing-lg)' }}>
@@ -176,6 +201,10 @@ export default function CommunityPage() {
 
         <Tabs.Panel value="users" style={{ marginTop: 'var(--mantine-spacing-lg)' }}>
           <ContentTable data={users} />
+        </Tabs.Panel>
+
+        <Tabs.Panel value="roles" style={{ marginTop: 'var(--mantine-spacing-lg)' }}>
+          <RolesTable roles={roles} />
         </Tabs.Panel>
       </Tabs>
     </div>
