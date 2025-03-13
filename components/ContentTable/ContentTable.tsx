@@ -1,61 +1,22 @@
+import React, { ReactNode } from 'react';
 import { Avatar, Badge, Group, Select, Table, Text } from '@mantine/core';
 
-const data = [
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png',
-    name: 'Robert Wolfkisser',
-    job: 'Engineer',
-    email: 'rob_wolf@gmail.com',
-    role: 'Collaborator',
-    lastActive: '2 days ago',
-    active: true,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png',
-    name: 'Jill Jailbreaker',
-    job: 'Engineer',
-    email: 'jj@breaker.com',
-    role: 'Collaborator',
-    lastActive: '6 days ago',
-    active: true,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-10.png',
-    name: 'Henry Silkeater',
-    job: 'Designer',
-    email: 'henry@silkeater.io',
-    role: 'Contractor',
-    lastActive: '2 days ago',
-    active: false,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png',
-    name: 'Bill Horsefighter',
-    job: 'Designer',
-    email: 'bhorsefighter@gmail.com',
-    role: 'Contractor',
-    lastActive: '5 days ago',
-    active: true,
-  },
-  {
-    avatar:
-      'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png',
-    name: 'Jeremy Footviewer',
-    job: 'Manager',
-    email: 'jeremy@foot.dev',
-    role: 'Manager',
-    lastActive: '3 days ago',
-    active: false,
-  },
-];
+const rolesData = ['Admin', 'Member'];
 
-const rolesData = ['Manager', 'Collaborator', 'Contractor'];
+interface User {
+  dateJoined: ReactNode;
+  avatar: string;
+  name: string;
+  role: string;
+  lastActive: string;
+  active: boolean;
+}
 
-export function ContentTable() {
+interface ContentTableProps {
+  data: User[];
+}
+
+export const ContentTable: React.FC<ContentTableProps> = ({ data }) => {
   const rows = data.map((item) => (
     <Table.Tr key={item.name}>
       <Table.Td>
@@ -64,9 +25,6 @@ export function ContentTable() {
           <div>
             <Text fz="sm" fw={500}>
               {item.name}
-            </Text>
-            <Text fz="xs" c="dimmed">
-              {item.email}
             </Text>
           </div>
         </Group>
@@ -81,13 +39,14 @@ export function ContentTable() {
         />
       </Table.Td>
       <Table.Td>{item.lastActive}</Table.Td>
+      <Table.Td>{item.dateJoined}</Table.Td>
       <Table.Td>
         {item.active ? (
-          <Badge fullWidth variant="light">
+          <Badge color="green.4" fullWidth variant="light">
             Active
           </Badge>
         ) : (
-          <Badge color="gray" fullWidth variant="light">
+          <Badge color="gray.4" fullWidth variant="light">
             Disabled
           </Badge>
         )}
@@ -100,9 +59,10 @@ export function ContentTable() {
       <Table verticalSpacing="sm">
         <Table.Thead>
           <Table.Tr>
-            <Table.Th>Employee</Table.Th>
+            <Table.Th>User</Table.Th>
             <Table.Th>Role</Table.Th>
             <Table.Th>Last active</Table.Th>
+            <Table.Th>Date Joined</Table.Th>
             <Table.Th>Status</Table.Th>
           </Table.Tr>
         </Table.Thead>
@@ -110,4 +70,4 @@ export function ContentTable() {
       </Table>
     </Table.ScrollContainer>
   );
-}
+};

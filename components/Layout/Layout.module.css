@@ -1,146 +1,154 @@
 .header {
-    padding-bottom: var(--mantine-spacing-md);
-    margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-    align-content: center;
-    justify-content: space-between;
-    background-color: var(--mantine-color-green-9);
-  }
-  
-  .nav {
-    padding-left: var(--mantine-spacing-md);
-    margin-left: calc(var(--mantine-spacing-md) * 1.5);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: var(--mantine-spacing-md);
-  }
-  
-  
-  .link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-size: var(--mantine-font-size-sm);
-    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-5));
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
-    border-radius: var(--mantine-radius-sm);
-    font-weight: 500;
-    float: right;
-  
-    @mixin hover {
-      background-color: light-dark(var(--mantine-color-green-0), var(--mantine-color-green-6));
+  padding-bottom: var(--mantine-spacing-md);
+  margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  align-content: center;
+  justify-content: space-between;
+  background-color: var(--mantine-color-green-9);
+}
+
+.nav {
+  padding-left: var(--mantine-spacing-md);
+  margin-left: calc(var(--mantine-spacing-md) * 1.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--mantine-spacing-md);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-5));
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-sm);
+  font-weight: 500;
+  float: right;
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-green-0), var(--mantine-color-green-6));
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
+
+    .linkIcon {
       color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
-  
+    }
+  }
+
+  &[data-active] {
+    &,
+    &:hover {
+      background-color: var(--mantine-color-blue-light);
+      color: var(--mantine-color-green-light-color);
+
       .linkIcon {
-        color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
-      }
-    }
-  
-    &[data-active] {
-      &,
-      &:hover {
-        background-color: var(--mantine-color-blue-light);
         color: var(--mantine-color-green-light-color);
-  
-        .linkIcon {
-          color: var(--mantine-color-green-light-color);
-        }
       }
     }
   }
-  
-  .linkIcon {
-    color: light-dark(var(--mantine-color-dark-6), var(--mantine-color-dark-5));
-    margin-right: var(--mantine-spacing-sm);
-    width: 25px;
-    height: 25px;
+}
+
+.linkIcon {
+  color: light-dark(var(--mantine-color-dark-6), var(--mantine-color-dark-5));
+  margin-right: var(--mantine-spacing-sm);
+  width: 25px;
+  height: 25px;
+}
+
+.avatar {
+  margin-top: var(--mantine-spacing-md);
+  margin-right: var(--mantine-spacing-md);
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-5));
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-green-0), var(--mantine-color-green-6));
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
+
+    .linkIcon {
+      color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
+    }
   }
 
-  .avatar {
-    margin-top: var(--mantine-spacing-md);
-    margin-right: var(--mantine-spacing-md);
-    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-5));
+  &[data-active] {
+    &,
+    &:hover {
+      background-color: var(--mantine-color-green-light);
+      color: var(--mantine-color-blue-light-color);
 
-
-    @mixin hover {
-        background-color: light-dark(var(--mantine-color-green-0), var(--mantine-color-green-6));
-        color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
-    
-        .linkIcon {
-          color: light-dark(var(--mantine-color-black), var(--mantine-color-black));
-        }
+      .linkIcon {
+        color: var(--mantine-color-blue-light-color);
       }
-    
-      &[data-active] {
-        &,
-        &:hover {
-          background-color: var(--mantine-color-green-light);
-          color: var(--mantine-color-blue-light-color);
-        
-          .linkIcon {
-            color: var(--mantine-color-blue-light-color);
-          }
-        }
-      }
+    }
   }
+}
 
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Three columns: left, middle, right */
-    gap: var(--mantine-spacing-lg); /* Add space between columns */
-  }
-  
-  .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .title {
-    margin-bottom: var(--mantine-spacing-md);
-    font-size: 1.5rem; /* Make the text a little smaller */
-    font-weight: 600; /* Make the text bold */
-    color: var(--mantine-color-dark-1); /* Modern dark color */
-  }
-  
-  .divider {
-    width: 50%;
-    margin: 10px auto; /* Center the divider */
-    border-top: 1px solid var(--mantine-color-dark-5); /* Light gray horizontal line */
-  }
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Three columns: left, middle, right */
+  gap: var(--mantine-spacing-lg); /* Add space between columns */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: var(--mantine-spacing-md);
+  font-size: 1.5rem; /* Make the text a little smaller */
+  font-weight: 600; /* Make the text bold */
+  color: var(--mantine-color-dark-1); /* Modern dark color */
+}
+
+.divider {
+  width: 50%;
+  margin: 10px auto; /* Center the divider */
+  border-top: 1px solid var(--mantine-color-dark-5); /* Light gray horizontal line */
+}
 
 .gridContainer {
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr; /* Adjusted to make the middle column wider */
-    grid-template-rows: auto 1fr;
-    gap: 20px;
-    padding: 20px;
-    flex: 1;
-    margin-top: 60px; /* Adjust based on header height */
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr; /* Adjusted to make the middle column wider */
+  grid-template-rows: auto 1fr;
+  /* gap: 20px; */
+  padding: 20px;
+  flex: 1;
+  margin-top: 60px; /* Adjust based on header height */
 }
 
 .emptyCell {
-    grid-column: span 1;
+  grid-column: span 1;
 }
 
 .titleCell {
-    grid-column: 2 / 3;
-    text-align: center;
+  grid-column: 2 / 3;
+  text-align: center;
 }
 
 .contentCell {
-    grid-column: 2 / 3;
-    display: flex;
-    flex-direction: column;
-    width: 100%; /* Ensure the content takes up the full width of the column */
-    margin: 0 auto; /* Center the content */
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure the content takes up the full width of the column */
+  margin: 0 auto; /* Center the content */
 }
 
 .shoutboxCell {
-    grid-column: 3 / 4;
-
+  grid-column: 3 / 4;
+  margin-top: 25%;
+  margin-left: 10%;
+  width: 100%;
+  margin-right: 10%;
+  margin-bottom: 10%;
 }
 
+.createPostButton {
+  position: absolute;
+  top: var(--mantine-spacing-sm);
+  right: var(--mantine-spacing-sm);
+  z-index: 1; /* Ensure the button is above other elements */
+}

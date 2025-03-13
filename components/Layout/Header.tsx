@@ -9,7 +9,7 @@ import { AvatarMenu } from './AvatarButton';
 import classes from './Layout.module.css';
 
 const data = [
-  { link: '/home', label: 'Home', icon: IconHome },
+  { link: '/', label: 'Home', icon: IconHome },
   { link: '/communities', label: 'Communities', icon: IconUsersGroup },
 ];
 

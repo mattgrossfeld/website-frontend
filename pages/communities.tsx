@@ -1,4 +1,6 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { Box, Button, Group } from '@mantine/core';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
 
 const communityData = [
@@ -41,8 +43,29 @@ const communityData = [
 ];
 
 const Communities = () => {
+  const router = useRouter();
+
+  const handleCardClick = (communityName: string, description: string) => {
+    router.push({
+      pathname: `/communities/${communityName}`,
+      query: { description },
+    });
+  };
+
+  const handleCreateCommunity = () => {
+    // Navigate to the create community page or open a modal
+    router.push({
+      pathname: '/create-community',
+    });
+  };
+
   return (
-    <div>
+    <Box /*style={{ maxWidth: '800px', margin: '0 auto' }}*/>
+      <Group align="left" mb="lg" mt="sm" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <Button color="green" onClick={handleCreateCommunity}>
+          Create Community
+        </Button>
+      </Group>
       {communityData.map((community, index) => (
         <CommunityCard
           key={index}
@@ -50,9 +73,10 @@ const Communities = () => {
           description={community.description}
           createdBy={community.createdBy}
           createdTm={community.createdTm}
+          onClick={() => handleCardClick(community.name, community.description)}
         />
       ))}
-    </div>
+    </Box>
   );
 };
 

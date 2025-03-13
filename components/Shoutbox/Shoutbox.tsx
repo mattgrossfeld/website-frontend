@@ -52,7 +52,9 @@ export function Shoutbox() {
           mt="sm"
         />
         <Group align="right" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button color="green.9" type="submit">
+            Submit
+          </Button>
         </Group>
       </form>
       <Box mt="lg">
