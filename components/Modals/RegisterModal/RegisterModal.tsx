@@ -1,7 +1,8 @@
-import { Button, Group, Modal, PasswordInput, TextInput } from '@mantine/core';
 import { useState } from 'react';
-import { DatePickerInput } from '@mantine/dates';
 import bcrypt from 'bcryptjs';
+import { Button, Group, Modal, PasswordInput, TextInput } from '@mantine/core';
+import { DatePickerInput } from '@mantine/dates';
+
 import '@mantine/dates/styles.css';
 
 interface RegisterModalProps {

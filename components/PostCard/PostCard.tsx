@@ -20,7 +20,13 @@ export function PostCard({ title, body, community, createdTm, createdBy }: PostC
   };
 
   return (
-    <Paper withBorder radius="md" className={classes.card} onClick={handleClick} style={{ cursor: 'pointer' }}>
+    <Paper
+      withBorder
+      radius="md"
+      className={classes.card}
+      onClick={handleClick}
+      style={{ cursor: 'pointer' }}
+    >
       <Group justify="space-between">
         <Text size="xl" fw={500}>
           {title}

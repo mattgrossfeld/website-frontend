@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Button, Group, Box } from '@mantine/core';
+import { Box, Button, Group } from '@mantine/core';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
 
 const communityData = [
@@ -55,7 +55,7 @@ const Communities = () => {
   const handleCreateCommunity = () => {
     // Navigate to the create community page or open a modal
     router.push({
-      pathname: '/create-community'
+      pathname: '/create-community',
     });
   };
 

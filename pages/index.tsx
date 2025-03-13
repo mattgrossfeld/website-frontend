@@ -1,6 +1,6 @@
 import '@mantine/tiptap/styles.css';
-import { PostCard } from '@/components/PostCard/PostCard';
 
+import { PostCard } from '@/components/PostCard/PostCard';
 
 const postData = [
   {
@@ -38,7 +38,6 @@ const IndexPage = () => {
     (a, b) => new Date(b.createdTm).getTime() - new Date(a.createdTm).getTime()
   );
 
-
   return (
     <>
       {sortedPostData.map((post, index) => (
@@ -48,7 +47,9 @@ const IndexPage = () => {
           body={post.body}
           community={post.community}
           createdTm={new Date(post.createdTm).toLocaleString()}
-          createdBy={post.createdBy} id={index}        />
+          createdBy={post.createdBy}
+          id={index}
+        />
       ))}
     </>
   );

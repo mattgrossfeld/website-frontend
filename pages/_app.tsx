@@ -60,27 +60,22 @@ export default function App({ Component, pageProps }: AppProps) {
     if (router.pathname.startsWith('/communities/')) {
       const communityName = router.query.community;
       setPageTitle(`${communityName}`);
-    } 
-    
-    else if (router.pathname.startsWith('/posts/')) {
+    } else if (router.pathname.startsWith('/posts/')) {
       const postName = router.query.postName;
       const decodedTitle = decodeURIComponent(postName as string).replace(/-/g, ' ');
-      const topPost = posts.find((post) => post.title.toLowerCase() === decodedTitle.toLowerCase() && post.parent_post_id === null);
+      const topPost = posts.find(
+        (post) =>
+          post.title.toLowerCase() === decodedTitle.toLowerCase() && post.parent_post_id === null
+      );
       if (topPost) {
         setPageTitle(topPost.title);
-      }
-      else {
+      } else {
         setPageTitle(posts[0].title);
       }
-    } 
-    
-    else if (router.pathname.startsWith('/users/')) {
+    } else if (router.pathname.startsWith('/users/')) {
       const username = router.query.username;
       setPageTitle(`User: ${username}`);
-    }
-
-    
-    else {
+    } else {
       switch (router.pathname) {
         case '/':
           setPageTitle('Latest Posts');

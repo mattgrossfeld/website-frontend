@@ -1,9 +1,5 @@
-import { NewCommunityForm } from "@/components/Forms/NewCommunityForm/NewCommunityForm";
-
-
+import { NewCommunityForm } from '@/components/Forms/NewCommunityForm/NewCommunityForm';
 
 export default function NewCommunityPage() {
-  return (
-    <NewCommunityForm />
-  );
+  return <NewCommunityForm />;
 }

@@ -1,4 +1,4 @@
-import { Table, Badge, ScrollArea } from '@mantine/core';
+import { Badge, ScrollArea, Table } from '@mantine/core';
 
 interface Role {
   roleName: string;
@@ -29,7 +29,7 @@ export function RolesTable({ roles }: RolesTableProps) {
             <Table.Th>Role Updated Time</Table.Th>
             <Table.Th>Role Created By</Table.Th>
             <Table.Th>Role Modified By</Table.Th>
-            </Table.Tr>
+          </Table.Tr>
         </Table.Thead>
         <Table.Tbody>
           {roles.map((role, index) => (
@@ -38,8 +38,7 @@ export function RolesTable({ roles }: RolesTableProps) {
               <Table.Td>{role.roleDescription}</Table.Td>
               <Table.Td>{role.roleLevel}</Table.Td>
               <Table.Td>
-                <Badge color={role.isAdmin ? 'green.4' : 'gray.4'}
-                fullWidth variant="light">
+                <Badge color={role.isAdmin ? 'green.4' : 'gray.4'} fullWidth variant="light">
                   {role.isAdmin ? 'True' : 'False'}
                 </Badge>
               </Table.Td>

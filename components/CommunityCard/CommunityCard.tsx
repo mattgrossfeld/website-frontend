@@ -1,4 +1,4 @@
-import { Group, Paper, Text, Button } from '@mantine/core';
+import { Button, Group, Paper, Text } from '@mantine/core';
 import classes from './CommunityCard.module.css';
 
 interface CommunityCardProps {
@@ -9,14 +9,26 @@ interface CommunityCardProps {
   onClick?: () => void;
 }
 
-export function CommunityCard({ name, description, createdBy, createdTm, onClick }: CommunityCardProps) {
+export function CommunityCard({
+  name,
+  description,
+  createdBy,
+  createdTm,
+  onClick,
+}: CommunityCardProps) {
   const handleJoinCommunity = () => {
     // Handle join community logic here
     console.log('Joined community:', name);
   };
 
   return (
-    <Paper withBorder radius="md" className={classes.card} onClick={onClick} style={{ cursor: 'pointer', position: 'relative' }}>
+    <Paper
+      withBorder
+      radius="md"
+      className={classes.card}
+      onClick={onClick}
+      style={{ cursor: 'pointer', position: 'relative' }}
+    >
       <Button
         color="green"
         size="xs"

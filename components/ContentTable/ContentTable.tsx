@@ -1,5 +1,5 @@
-import { Avatar, Badge, Group, Select, Table, Text } from '@mantine/core';
 import React, { ReactNode } from 'react';
+import { Avatar, Badge, Group, Select, Table, Text } from '@mantine/core';
 
 const rolesData = ['Admin', 'Member'];
 
@@ -10,11 +10,11 @@ interface User {
   role: string;
   lastActive: string;
   active: boolean;
-};
+}
 
 interface ContentTableProps {
   data: User[];
-};
+}
 
 export const ContentTable: React.FC<ContentTableProps> = ({ data }) => {
   const rows = data.map((item) => (
@@ -70,4 +70,4 @@ export const ContentTable: React.FC<ContentTableProps> = ({ data }) => {
       </Table>
     </Table.ScrollContainer>
   );
-}
+};

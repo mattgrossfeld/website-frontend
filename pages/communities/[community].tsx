@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
-import { Button, Tabs, Text, Group } from '@mantine/core';
-import { PostCard } from '../../components/PostCard/PostCard';
-import { ContentTable } from '../../components/ContentTable/ContentTable';
-import { RolesTable } from '../../components/RolesTable/RolesTable';
 import { IconPlus } from '@tabler/icons-react';
+import { Button, Group, Tabs, Text } from '@mantine/core';
+import { ContentTable } from '../../components/ContentTable/ContentTable';
+import { PostCard } from '../../components/PostCard/PostCard';
+import { RolesTable } from '../../components/RolesTable/RolesTable';
 
 // Mock data for posts and users
 const posts = [
@@ -16,7 +16,7 @@ const posts = [
     createdBy: 'User1',
     communityId: 1,
     communityName: 'Community 1',
-    parent_post_id: null
+    parent_post_id: null,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const posts = [
     createdBy: 'User2',
     communityId: 1,
     communityName: 'Community 1',
-    parent_post_id: 1
+    parent_post_id: 1,
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const posts = [
     createdBy: 'User3',
     communityId: 1,
     communityName: 'Community 1',
-    parent_post_id: 1
+    parent_post_id: 1,
   },
   {
     id: 4,
@@ -43,8 +43,8 @@ const posts = [
     createdBy: 'User4',
     communityId: 1,
     communityName: 'Community 1',
-    parent_post_id: 1
-  }
+    parent_post_id: 1,
+  },
 ];
 
 const users = [
@@ -170,7 +170,9 @@ export default function CommunityPage() {
       </Text>
       <Tabs color="green.7" value={activeTab} onChange={(value) => setActiveTab(value || 'posts')}>
         <Group align="right" style={{ width: '100%' }}>
-          <Button color="green.9" ml="auto">Join Community</Button>
+          <Button color="green.9" ml="auto">
+            Join Community
+          </Button>
         </Group>
         <Tabs.List>
           <Tabs.Tab value="posts">Posts</Tabs.Tab>
@@ -179,7 +181,7 @@ export default function CommunityPage() {
         </Tabs.List>
 
         <Tabs.Panel value="posts" style={{ marginTop: 'var(--mantine-spacing-lg)' }}>
-        <Button
+          <Button
             value="create-post"
             onClick={handleCreatePost}
             style={{
@@ -195,7 +197,13 @@ export default function CommunityPage() {
             Create Post
           </Button>
           {posts.map((post) => (
-            <PostCard createdTm={new Date().toLocaleTimeString()} body={post.content} community={post.communityName} key={post.id} {...post} />
+            <PostCard
+              createdTm={new Date().toLocaleTimeString()}
+              body={post.content}
+              community={post.communityName}
+              key={post.id}
+              {...post}
+            />
           ))}
         </Tabs.Panel>
 

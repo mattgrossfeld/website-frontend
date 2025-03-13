@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Avatar, Box, Card, Group, Tabs, Text, Textarea, Button } from '@mantine/core';
-import { PostCard } from '@/components/PostCard/PostCard';
+import { Avatar, Box, Button, Card, Group, Tabs, Text, Textarea } from '@mantine/core';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
+import { PostCard } from '@/components/PostCard/PostCard';
 
 const user = {
   displayName: 'John Doe',
@@ -56,7 +56,7 @@ const user = {
       description: 'Description of Community 2',
       createdBy: 'John Doe',
       createdTm: '2025-02-03T12:00:00Z',
-    }
+    },
     // ...other communities
   ],
 };
@@ -79,7 +79,14 @@ export default function ProfilePage() {
   };
 
   return (
-    <Box style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: 'var(--mantine-spacing-md)' }}>
+    <Box
+      style={{
+        width: '100%',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: 'var(--mantine-spacing-md)',
+      }}
+    >
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Group align="center">
           <Avatar src={user.profilePicture} size="xl" radius="xl" />
@@ -119,9 +126,10 @@ export default function ProfilePage() {
             <CommunityCard
               key={community.id}
               name={community.name}
-              description={community.description} 
-              createdBy={community.createdBy} 
-              createdTm={community.createdTm}            />
+              description={community.description}
+              createdBy={community.createdBy}
+              createdTm={community.createdTm}
+            />
           ))}
         </Tabs.Panel>
         <Tabs.Panel value="add-comment">

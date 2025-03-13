@@ -1,31 +1,62 @@
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useState, useEffect, useRef } from 'react';
-import { Text, Button, Group } from '@mantine/core';
-import { PostCard } from '../../components/PostCard/PostCard';
+import { Button, Group, Text } from '@mantine/core';
 import { posts } from '../_app';
+import { PostCard } from '../../components/PostCard/PostCard';
+
 import '@mantine/tiptap/styles.css';
+
 import dynamic from 'next/dynamic';
 
-const RichTextEditorComponent = dynamic<{}>(() => import('../../components/RichTextEditor/RichTextEditor')
-  .then(mod => mod.RichTextEditorComponent), 
-  { ssr: false });
+const RichTextEditorComponent = dynamic<{}>(
+  () =>
+    import('../../components/RichTextEditor/RichTextEditor').then(
+      (mod) => mod.RichTextEditorComponent
+    ),
+  { ssr: false }
+);
 
 // const RichTextEditorComponent = dynamic(() => import('@mantine/rte'), { ssr: false });
 
 export default function PostPage() {
   const router = useRouter();
   const { postName } = router.query;
-  const [topPost, setTopPost] = useState<{ id: number; title: string; content: string; createdBy: string; communityId: number; communityName: string; createdTm: string; parent_post_id: number | null } | null>(null);
-  const [replies, setReplies] = useState<Array<{ id: number; title: string; content: string; createdBy: string; communityId: number; communityName: string; createdTm: string; parent_post_id: number | null }>>([]);
+  const [topPost, setTopPost] = useState<{
+    id: number;
+    title: string;
+    content: string;
+    createdBy: string;
+    communityId: number;
+    communityName: string;
+    createdTm: string;
+    parent_post_id: number | null;
+  } | null>(null);
+  const [replies, setReplies] = useState<
+    Array<{
+      id: number;
+      title: string;
+      content: string;
+      createdBy: string;
+      communityId: number;
+      communityName: string;
+      createdTm: string;
+      parent_post_id: number | null;
+    }>
+  >([]);
   const latestPostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (postName) {
       const decodedTitle = decodeURIComponent(postName as string).replace(/-/g, ' ');
-      const topPost = posts.find((post) => post.title.toLowerCase() === decodedTitle.toLowerCase() && post.parent_post_id === null);
+      const topPost = posts.find(
+        (post) =>
+          post.title.toLowerCase() === decodedTitle.toLowerCase() && post.parent_post_id === null
+      );
       if (topPost) {
         setTopPost(topPost);
-        const replies = posts.filter((post) => post.parent_post_id === topPost.id).sort((a, b) => new Date(a.createdTm).getTime() - new Date(b.createdTm).getTime());
+        const replies = posts
+          .filter((post) => post.parent_post_id === topPost.id)
+          .sort((a, b) => new Date(a.createdTm).getTime() - new Date(b.createdTm).getTime());
         setReplies(replies);
         if (typeof window !== 'undefined') {
           document.title = topPost.title; // Set the page title to the title of the original post
@@ -68,11 +99,28 @@ export default function PostPage() {
             <PostCard body={reply.content} community="" {...reply} />
           </div>
         ))}
-        <div style={{ minHeight: '200px', border: '1px solid var(--mantine-color-dark-9)', borderRadius: '4px', marginTop: 'var(--mantine-spacing-md)' }}>
+        <div
+          style={{
+            minHeight: '200px',
+            border: '1px solid var(--mantine-color-dark-9)',
+            borderRadius: '4px',
+            marginTop: 'var(--mantine-spacing-md)',
+          }}
+        >
           <RichTextEditorComponent />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'var(--mantine-spacing-md)' }}>
-          <Button color="green" onClick={handlePreview} style={{ marginRight: 'var(--mantine-spacing-xs)' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginTop: 'var(--mantine-spacing-md)',
+          }}
+        >
+          <Button
+            color="green"
+            onClick={handlePreview}
+            style={{ marginRight: 'var(--mantine-spacing-xs)' }}
+          >
             Preview
           </Button>
           <Button color="green" onClick={handleSubmit}>
@@ -83,4 +131,3 @@ export default function PostPage() {
     </div>
   );
 }
-
