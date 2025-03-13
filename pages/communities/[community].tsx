@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { Button, Tabs, Text, Group, ScrollArea } from '@mantine/core';
+import { Button, Tabs, Text, Group } from '@mantine/core';
 import { PostCard } from '../../components/PostCard/PostCard';
 import { ContentTable } from '../../components/ContentTable/ContentTable';
 import { RolesTable } from '../../components/RolesTable/RolesTable';
