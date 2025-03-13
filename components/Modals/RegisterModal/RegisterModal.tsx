@@ -98,12 +98,6 @@ export default function RegisterModal({ opened, onClose }: RegisterModalProps) {
         required
         value={dob}
         onChange={setDob}
-        styles={{
-          input: {
-            fontSize: '14px',
-            padding: '10px',
-          },
-        }}
       />
       <PasswordInput
         label="Password"
