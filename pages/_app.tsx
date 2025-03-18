@@ -96,7 +96,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.pathname, router.query]);
 
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider defaultColorScheme='dark'>
       <Head>
         <title>Matthew's Web Forum</title>
         <meta
