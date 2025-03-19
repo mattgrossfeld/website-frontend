@@ -6,7 +6,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { MantineProvider } from '@mantine/core';
 import Layout from '@/components/Layout/Layout';
-import { theme } from '../theme';
 
 // Mock data for posts
 export const posts = [

@@ -3,7 +3,7 @@ const ENV = process.env.NODE_ENV || 'local';
 const getBackendUrl = () => {
   switch (ENV) {
     case 'development':
-      return process.env.NEXT_PUBLIC_BACKEND_URL_DEV || 'http://localhost:3000';
+      return process.env.NEXT_PUBLIC_BACKEND_URL_DEV || 'https://localhost:3000';
     case 'production':
       return process.env.NEXT_PUBLIC_BACKEND_URL_PROD || 'http://prod.example.com';
     default:

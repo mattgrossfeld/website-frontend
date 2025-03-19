@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --experimental-https",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
@@ -47,10 +47,11 @@
     "@tiptap/starter-kit": "^2.11.5",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "dayjs": "^1.11.13",
     "embla-carousel-react": "^7.1.0",
     "mantine-next-template": "file:",
-    "next": "15.1.5",
+    "next": "^15.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "recharts": "^2.15.1"

@@ -15,10 +15,10 @@ export default function RegisterModal({ opened, onClose }: RegisterModalProps) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
-  const [dob, setDob] = useState<Date | null>(null);
+  const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
@@ -31,13 +31,30 @@ export default function RegisterModal({ opened, onClose }: RegisterModalProps) {
     const user = {
       firstName,
       lastName,
-      username,
+      userName,
       displayName,
+      roleId: 2,
       email,
-      dob,
+      dateOfBirth,
       password: hash,
+      createdBy: 'FRONTEND-SYSTEM',
+      modifiedBy: 'FRONTEND-SYSTEM'
     };
     console.log('User:', user);
+
+    const response = await fetch('http://localhost:3000/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+
+    if (response.ok) {
+      console.log('User registered successfully');
+    } else {
+      console.error('Failed to register user');
+    }
   };
 
   return (
@@ -72,8 +89,8 @@ export default function RegisterModal({ opened, onClose }: RegisterModalProps) {
           label="Username"
           placeholder="john_doe123"
           required
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
+          value={userName}
+          onChange={(event) => setUserName(event.currentTarget.value)}
         />
         <TextInput
           label="Display Name"
@@ -96,8 +113,8 @@ export default function RegisterModal({ opened, onClose }: RegisterModalProps) {
         label="Date of Birth"
         placeholder="MM/DD/YYYY"
         required
-        value={dob}
-        onChange={setDob}
+        value={dateOfBirth}
+        onChange={setDateOfBirth}
       />
       <PasswordInput
         label="Password"
