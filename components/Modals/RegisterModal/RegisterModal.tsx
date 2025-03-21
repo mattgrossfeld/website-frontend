@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import bcrypt from 'bcryptjs';
 import { Button, Group, Modal, PasswordInput, TextInput } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 
@@ -25,9 +24,7 @@ export default function RegisterModal({ opened, onClose }: RegisterModalProps) {
       console.error('Passwords do not match');
       return;
     }
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
-    console.log('Hashed Password:', hash);
+
     const user = {
       firstName,
       lastName,
@@ -36,13 +33,13 @@ export default function RegisterModal({ opened, onClose }: RegisterModalProps) {
       roleId: 2,
       email,
       dateOfBirth,
-      password: hash,
+      password,
       createdBy: 'FRONTEND-SYSTEM',
       modifiedBy: 'FRONTEND-SYSTEM'
     };
     console.log('User:', user);
 
-    const response = await fetch('http://localhost:3000/users/register', {
+    const response = await fetch('https://localhost:3000/users/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
