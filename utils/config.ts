@@ -1,15 +1,31 @@
+import fs from 'fs';
+import path from 'path';
+
 const ENV = process.env.NODE_ENV || 'local';
 
-const getBackendUrl = () => {
+const getPropertiesFilePath = () => {
   switch (ENV) {
     case 'development':
-      // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-      return process.env.NEXT_PUBLIC_BACKEND_URL_DEV || 'https://localhost:3000';
+      return path.resolve(process.cwd(), 'local-properties.properties');
     case 'production':
-      return process.env.NEXT_PUBLIC_BACKEND_URL_PROD || 'http://prod.example.com';
+      return path.resolve(process.cwd(), 'prod-properties.properties');
     default:
-      return process.env.NEXT_PUBLIC_BACKEND_URL_LOCAL || 'http://localhost:3000';
+      return path.resolve(process.cwd(), 'local-properties.properties');
   }
 };
 
-export const BACKEND_URL = getBackendUrl();
+let BACKEND_URL = 'http://localhost:3000';
+
+if (typeof window === 'undefined') {
+  const propertiesFilePath = getPropertiesFilePath();
+  const properties = fs.readFileSync(propertiesFilePath, 'utf-8')
+    .split('\n')
+    .reduce((acc, line) => {
+      const [key, value] = line.split('=');
+      acc[key.trim()] = value.trim();
+      return acc;
+    }, {} as Record<string, string>);
+  BACKEND_URL = properties.BACKEND_URL;
+}
+
+export { BACKEND_URL };

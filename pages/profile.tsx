@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Avatar, Box, Button, Card, Group, Tabs, Text, Textarea } from '@mantine/core';
+import { Avatar, Box, Button, Card, Container, Group, Tabs, Text, Textarea } from '@mantine/core';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
 import { PostCard } from '@/components/PostCard/PostCard';
 
@@ -72,10 +72,31 @@ const dummyComments = [
 
 export default function ProfilePage() {
   const [comment, setComment] = useState('');
+  const [responseMessage, setResponseMessage] = useState('');
 
   const handleCommentSubmit = () => {
     // Handle comment submission logic here
     console.log('Comment submitted:', comment);
+  };
+
+  const handleGetUsers = async () => {
+    try {
+      const response = await fetch('https://localhost:3000/users/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setResponseMessage(JSON.stringify(data, null, 2));
+      } else {
+        setResponseMessage('Failed to fetch users');
+      }
+    } catch (error) {
+      setResponseMessage('An error occurred');
+    }
   };
 
   return (
@@ -159,6 +180,17 @@ export default function ProfilePage() {
           </Group>
         </Tabs.Panel>
       </Tabs>
+
+      <Container>
+        <Group position="center" mt="xl">
+          <Button onClick={handleGetUsers}>Get Users</Button>
+        </Group>
+        {responseMessage && (
+          <Text mt="md" style={{ whiteSpace: 'pre-wrap' }}>
+            {responseMessage}
+          </Text>
+        )}
+      </Container>
     </Box>
   );
 }

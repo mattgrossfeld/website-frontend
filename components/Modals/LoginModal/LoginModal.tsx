@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Anchor, Button, Checkbox, Group, Modal, PasswordInput, TextInput, Text } from '@mantine/core';
+import Cookies from 'js-cookie';
 
 interface LoginModalProps {
   opened: boolean;
@@ -29,9 +30,13 @@ export default function LoginModal({ opened, onClose }: LoginModalProps) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
+      credentials: 'include', // Include credentials in the request
     });
 
     if (response.ok) {
+      const data = await response.json();
+      const token = data.token;
+      Cookies.set('jwt', token, { expires: 1, httpOnly: true, secure: true }); // Set cookie to expire in 1 day
       console.log('User logged in successfully');
     } else {
       console.error('Failed to log in user');
