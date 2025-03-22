@@ -36,7 +36,7 @@ export default function LoginModal({ opened, onClose }: LoginModalProps) {
     if (response.ok) {
       const data = await response.json();
       const token = data.token;
-      Cookies.set('jwt', token, { expires: 1, httpOnly: true, secure: true }); // Set cookie to expire in 1 day
+      Cookies.set('jwt', token); // Set cookie to expire in 1 day
       console.log('User logged in successfully');
     } else {
       console.error('Failed to log in user');

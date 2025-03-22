@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Avatar, Box, Button, Card, Container, Group, Tabs, Text, Textarea } from '@mantine/core';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
 import { PostCard } from '@/components/PostCard/PostCard';
+import Cookies from 'js-cookie';
 
 const user = {
   displayName: 'John Doe',
@@ -86,6 +87,7 @@ export default function ProfilePage() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Include credentials in the request
       });
 
       if (response.ok) {
