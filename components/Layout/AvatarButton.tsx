@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Avatar, Group, Menu, UnstyledButton, Divider } from '@mantine/core';
 import Link from 'next/link';
-import Cookies from 'js-cookie';
+import { checkCookie } from '@/utils/cookieChecker';
 import classes from './Layout.module.css';
 
 interface AvatarMenuProps {
@@ -12,18 +12,9 @@ interface AvatarMenuProps {
 export function AvatarMenu({ onLoginClick, onRegisterClick }: AvatarMenuProps) {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
-  const checkCookie = () => {
-    console.log("All cookies:", Cookies.get());
-    const token = Cookies.get('csrf');
-    console.log("CSRF token:", token);
-    if (token) {
-      console.log("Token exists");
-      setIsLoggedIn(true);
-    }
-    else {
-      console.log("Token does not exist.");
-      setIsLoggedIn(false);
-    }
+  const handleCheckCookie = () => {
+    const tokenExists = checkCookie();
+    setIsLoggedIn(tokenExists);
   };
 
   const handleLogout = async () => {
@@ -45,7 +36,7 @@ export function AvatarMenu({ onLoginClick, onRegisterClick }: AvatarMenuProps) {
   };
 
   return (
-    <Menu shadow="md" width={200} onOpen={checkCookie}>
+    <Menu shadow="md" width={200} onOpen={handleCheckCookie}>
       <Menu.Target>
         <UnstyledButton>
           <Group>
