@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Avatar, Box, Button, Card, Container, Group, Tabs, Text, Textarea } from '@mantine/core';
 import { CommunityCard } from '@/components/CommunityCard/CommunityCard';
 import { PostCard } from '@/components/PostCard/PostCard';
-import Cookies from 'js-cookie';
 
 const user = {
   displayName: 'John Doe',
@@ -184,7 +183,7 @@ export default function ProfilePage() {
       </Tabs>
 
       <Container>
-        <Group position="center" mt="xl">
+        <Group align="center" mt="xl">
           <Button onClick={handleGetUsers}>Get Users</Button>
         </Group>
         {responseMessage && (

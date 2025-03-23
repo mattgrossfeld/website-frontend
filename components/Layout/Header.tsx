@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { IconHome, IconUsersGroup } from '@tabler/icons-react';
 import { Group, MantineProvider } from '@mantine/core';
-import { theme } from '@/theme';
 import LoginModal from '../Modals/LoginModal/LoginModal';
 import RegisterModal from '../Modals/RegisterModal/RegisterModal';
 import { AvatarMenu } from './AvatarButton';
@@ -46,7 +45,7 @@ export default function Header() {
   const closeRegisterModal = () => setRegisterModalOpened(false);
 
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider defaultColorScheme="dark">
       <div className={classes.header}>
         <nav className={classes.nav}>
           <div>

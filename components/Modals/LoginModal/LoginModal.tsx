@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Anchor, Button, Checkbox, Group, Modal, PasswordInput, TextInput, Text } from '@mantine/core';
-import Cookies from 'js-cookie';
 import { z } from 'zod';
 import { loginSchema } from '@/utils/loginValidation';
 
@@ -43,9 +42,6 @@ export default function LoginModal({ opened, onClose }: LoginModalProps) {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        const token = data.token;
-        Cookies.set('jwt', token); // Set cookie to expire in 1 day
         console.log('User logged in successfully');
         onClose(); // Close the modal upon successful login
       } else {
