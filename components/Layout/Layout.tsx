@@ -11,7 +11,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
   return (
-    <div className={classes.layoutContainer}>
+    <div>
       <Header />
       <div className={classes.gridContainer}>
         <div className={classes.emptyCell} />
